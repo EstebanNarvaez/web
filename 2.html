@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Google</title>
+
+    <!-- Estilo para asegurar que el mapa tenga tamaño -->
+    <style>
+        .google-map-container {
+            height: 500px;
+            width: 100%;
+        }
+        .google-map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    
+    <!-- Agrega tu API Key aquí -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9...&callback=initMap" async defer></script>
+</head>
+
+<body>
+
+    <!-- RD Google Map -->
+    <section class="section section-fluid">
+        <!-- Google Map -->
+        <section class="section">
+            <div class="google-map-container">
+                <div class="google-map" id="map"></div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Script para inicializar el mapa -->
+    <script>
+        function initMap() {
+            const location = { lat: 38.7779, lng: -77.0538 };  // Coordenadas de Alexandria, VA
+            const map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 14,
+                center: location,
+                styles: [
+                    { featureType: 'administrative', elementType: 'labels.text.fill', stylers: [{ color: '#444444' }] },
+                    { featureType: 'landscape', elementType: 'all', stylers: [{ color: '#f2f2f2' }] },
+                    { featureType: 'poi', elementType: 'all', stylers: [{ visibility: 'off' }] },
+                    { featureType: 'road', elementType: 'all', stylers: [{ saturation: -100 }, { lightness: 45 }] },
+                    { featureType: 'water', elementType: 'all', stylers: [{ color: '#b4d4e1' }] }
+                ]
+            });
+
+            // Marcador en la ubicación
+            new google.maps.Marker({
+                position: location,
+                map,
+                title: '6036 Richmond Hwy, Alexandria, VA'
+            });
+        }
+    </script>
+
+</body>
+</html>
